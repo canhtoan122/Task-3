@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "eecdd01d-7d2a-45b7-9836-d02ceab79677",
+		"name": "DMAC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22907018"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "logout",
+					"item": [
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Xsrf-Token",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Refresh-Token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Xsrf-Token",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Refresh-Token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"history_login_ids\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/logout/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"logout",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "forgot password",
+					"item": [
+						{
+							"name": "Change password forgot password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pwd\": \"$2a$12$FPA1LEJsR.A9j53UjdaQ0OmCTLE6fEAHnh5LRuhXTUzgzBL1Aju62\",\n    \"code\": \"47738255\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM4OTE0OTIsImV4cCI6MTY5Mzg5MTc5Mn0.Y3wD46xlNUF5PbC6BEpg3WFc27eUKgnc--lOhVE1mHg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/verify/forgot-pwd",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"verify",
+										"forgot-pwd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send code  by email forgot",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"hung2811.iuh@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/send-mail/forgot-pwd",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"send-mail",
+										"forgot-pwd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete account",
+					"item": [
+						{
+							"name": "delete account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Nzc0OTQxNjksImV4cCI6MTY3NzQ5NDI4OX0.6zVTyPO0_B9XtYzEds0hetqIXVfEz02H6b1Zqv4muus\",\r\n    \"code\": \"99099753\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/verify/delete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"verify",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "send mail for delete account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Xsrf-Token",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Refresh-Token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": \"URLfwaW9j16oC1Fzko0JwBg9RDp8Zga1ESiJI9MBN3B2cX3nMeuaJYFLglVRlhlhSOrmbaQOvlxOa+uZ5tYHec3Ty1IWzsvBtLmE4A8pwY+HMqAS+bdrcLtsdqkfru7REQ6OZWO3pfNvEmxfg8IRW15+QWhVgbEXSITRqzUJWBVuQ3Wp1RM9HyjDdEZdoTct/bGgY3lDkwB0Nvh48SHP+z3KUHgborf6Ainf1RMZDDWzA8V1aqB9q3vI5oB6Q+t/pqip/w3BVwQi8L5bAHgNYlYIlyMOQKlC0hIggS7gmUTAHuliShPmK9cl7r/6ogRfbHdkc/cQedhUVSrWe2g15O0Cq69llRmJ7oku7Tu2rN2QocSjdTw6Z0Esxo+8PbMdoeGOEMjiLTaJ3aWr/InbqrVZ6T/9Y6Mo+coRbIqFhaQoW8ouTRggGY4P5JZ0mJkuQXC14aTzw5CcBtAKWBoLTmrnBMtdhhGUewjNrVrtmSDvlbPPRzWpxJL83QM9FmcWV/lnChV8g/ogtzN+QEYTHQo7g3/HFWifzwwiXXU4rs8CJPFsLiO2HpNDPHDwybTPJQfS6GpdgXFhP4eWv/nblKP0dX0cM/eiqUPXbwaNenPVv/L4mh1n+FesR8NnxpVvD3kHMfjMvOQ0VAJlVS2Oiz6Y+S8uRNW3YtATeXNeFkc=\"\n    // {\n    //     \"pwd\": \"Hung@123\"\n    // }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/send-mail/delete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"send-mail",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "change password",
+					"item": [
+						{
+							"name": "change password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "xsrf-Token",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									},
+									{
+										"key": "refresh-Token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": \"NHAXBbdq5UxMBk2Z/bBnjBErQZm8dw1laeZfqfpRm3UQmSh8K3WGYoizIq7991EjSFGkdXnq6d91aePiv5dfe18G4t5rbIsoE7kFpG8XMOH6dfE5BFDEOmS9qOsWfKceitE300K9igOnKmASbg/QBgi3oyPZtaHb6dWp6zLZKEaauoArpO5OQ8ljLap/OHuunpIBWBcjrlRM80UnAN0gRy5dapvnsmKcVQdudJwwqKI1atrv3J2dXrEkBYkBvgQlHjyF7XF5Tm47+JNcOOJ0q2QcqjHFO9l3bJ0bgb2Zlnb89pnVrDML/euZbvBz7H68A+hzy87HzVVzv5OdkhrJ6oeObjnF1CDigALDryhcOiLlnvz+68BeIAU7jdGXm10BQyicSr8HMRqV1RjKlWxaElW8+SYvRm0SaSeFH1Ms99ovPh5NUPg2aGo7PZljHthW7+eosL75bpln+LERNzkxlvXGDt9Ulyn/nr4aSi1R05UacU4/ECMnNYbWQNr1jyngSgyGQyf2HKFD5tQmzidua5krJHSI/4zt9vl75+5kkwlftdS+oQdn+U3aZ1L6hs0xizl0lrIU5Z8nXsx4OPnoG2YI3nEBjjmRdbowdP3Z1yHPgz12lH9Cubc7nkjBBkqLzGIU0GK3hQ8Mvfm5zjsd689GJCJBhF0c+9KZr1OK/sE=\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/change-pwd",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"change-pwd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).data.token);",
+									"postman.setEnvironmentVariable(\"refresh_token\", JSON.parse(responseBody).data.refresh_token);",
+									"postman.setEnvironmentVariable(\"xsrf_token\", JSON.parse(responseBody).data.xsrf_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "City",
+								"value": "Ho Chi Minh",
+								"type": "text"
+							},
+							{
+								"key": "Region",
+								"value": "VI",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"test123\",\r\n    \"password\": \"{{password}}\",\r\n    \"rememberMe\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login?locale=vi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "vi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Invite-Token",
+								"value": "hung2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"demo\",\n    \"username\": \"demo\",\n    \"email\": \"hung28fr1f2.iuh@gmail.com\",\n    \"password\": \"$2a$12$D6rOT3dSEI9ivzzDG7VAvetjkJuLwE9ERnoP3VcTiep7cp/D53I3O\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register?locale=en",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[TEST] Get Login Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"password\", JSON.parse(responseBody).password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email_username_id\": \"demo\",\n    \"data_raw\": \"Hung@123\"\n\n    // {\n    //     \"old_pwd\": \"Hung@321\",\n    //     \"new_pwd\": \"$2a$12$/RRS/zJAljKomtxWT96CVeqSVx24.KW8/Xf/XywGY65yef6dUBQky\"\n    // }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlTest}}/api/test/auth/login",
+							"host": [
+								"{{baseUrlTest}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Public Key",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"username\": \"sonne123\",\r\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login/:email_or_username_or_user_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								":email_or_username_or_user_id"
+							],
+							"variable": [
+								{
+									"key": "email_or_username_or_user_id",
+									"value": "hung"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get history login",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Xsrf-Token",
+								"value": "{{xsrf_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "{{refresh_token}}",
+								"type": "text"
+							},
+							{
+								"key": "User-agent",
+								"value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/history/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"history",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user login",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Xsrf-Token",
+								"value": "{{xsrf_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "{{refresh_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[TEST] refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).data.token);",
+									"postman.setEnvironmentVariable(\"refresh_token\", JSON.parse(responseBody).data.refresh_token);",
+									"postman.setEnvironmentVariable(\"xsrf_token\", JSON.parse(responseBody).data.xsrf_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Refresh-Token",
+								"value": "{{refresh_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Xsrf-Token",
+								"value": "{{xsrf_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rememberMe\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login/refresh?locale=en",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"refresh"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "media",
+			"item": [
+				{
+					"name": "upload",
+					"item": [
+						{
+							"name": "Get Upload Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setEnvironmentVariable(\"token-upload\", JSON.parse(responseBody).data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Xsrf-Token",
+										"value": "{{xsrf_token}}",
+										"type": "text"
+									},
+									{
+										"key": "Refresh-Token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/media/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"media",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "upload",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token-upload}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Access-Control-Allow-Origin",
+										"value": "'*'",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUpload}}/api/upload",
+									"host": [
+										"{{baseUpload}}"
+									],
+									"path": [
+										"api",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

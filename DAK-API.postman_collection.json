@@ -1,0 +1,959 @@
+{
+	"info": {
+		"_postman_id": "b40e273d-15e5-4ce1-a82f-1b6158aff859",
+		"name": "DAK-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22907018"
+	},
+	"item": [
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "group chat",
+					"item": [
+						{
+							"name": "create group chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMWE5OTc2YS1jNWUzLTQyZjMtYmNiZi1jNDNmZGE2ZTZkM2UiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2OTg1MDI1NjMsImV4cCI6MTcwMTA5NDU2M30.EZhWzNb_vkiOWLZofXIB2LI289GHk_RhSsbfdFKRBMM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test3\",\n    \"member\": [\"bf3ef338-7980-4b6a-a861-69fbcb53de9f\",\"2f25d785-e8b7-55b8-b327-dcc68d782ed4\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "grant-permission",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"conversation_id\" :\"52477fab-cdc3-5ecc-ae47-789b5bc354ac\",\r\n    \"user_id\":\"f033c53c-4ece-5fe7-b851-67b7b3781196\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_chat}}/conversation/grant-permission",
+									"host": [
+										"{{base_chat}}"
+									],
+									"path": [
+										"conversation",
+										"grant-permission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Out Group",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"conversation_id\":\"52477fab-cdc3-5ecc-ae47-789b5bc354ac\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_chat}}/conversation/out-group",
+									"host": [
+										"{{base_chat}}"
+									],
+									"path": [
+										"conversation",
+										"out-group"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kick user",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":\"dae71993-56fc-55c2-b143-000d04c47303\",\r\n    \"conversation_id\":\"52477fab-cdc3-5ecc-ae47-789b5bc354ac\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_chat}}/conversation/delete-user",
+									"host": [
+										"{{base_chat}}"
+									],
+									"path": [
+										"conversation",
+										"delete-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add User",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"conversation_id\":\"93b15ed9-ba07-51cf-b578-6e4d3e4b8e07\",\r\n    \"user_id\":[\"f033c53c-4ece-5fe7-b851-67b7b3781196\",\"dae71993-56fc-55c2-b143-000d04c47303\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_chat}}/conversation/add-user",
+									"host": [
+										"{{base_chat}}"
+									],
+									"path": [
+										"conversation",
+										"add-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LIST USER",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_chat}}/conversation/listUser/:conversationId",
+									"host": [
+										"{{base_chat}}"
+									],
+									"path": [
+										"conversation",
+										"listUser",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "5d708542-8e1a-52bd-b1e5-b6b28044e55b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User(for CUD from Dakapp)",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"891fc3f5-5fdd-5667-a0b2-def1144e5689\",\n    \"username\": \"hungv2\",\n    \"avatar\": \"https://i.stack.imgur.com/l60Hf.png\",\n    \"status\": 1,\n    \"email\": \"vuonghung224.dev@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/external/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"external",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/external/users/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"external",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test221 van\",\n    \"email\": \"hung@gmail.com\",\n    \"status\": 1,\n    \"avatar\": \"http://avatar1.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/external/users/c352adca-e273-4789-967c-b968d97fbe48",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"external",
+										"users",
+										"c352adca-e273-4789-967c-b968d97fbe48"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{externalApiToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "search for chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MTlhOTA5ZC1mNDc5LTQxZDgtOGI0NC1jODNlZDczZmUzMDEiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2OTMzMDI1NDIsImV4cCI6MTY5MzM4ODk0Mn0.yF952eo23gc0npe9HMn8Xh1YEr83wGq9VL7UogmPkrs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users?page=1&limit=10&keyword=h",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "keyword",
+											"value": "h"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/detail",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{externalApiToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Conversation",
+					"item": [
+						{
+							"name": "list conversation belong to user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNzljNTFmYy0yYzg3LTRhMTYtODE4OS01MTU3NTRkNDY4ODgiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2OTg1Nzg0NTMsImV4cCI6MTcwMTE3MDQ1M30.HKZlXKdNITEcKcK8-alRw7wxefSk_HJrQ20xGZJvrsA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://test4.stechvn.org/conversations??offset=0&limit=10&status=[1]",
+									"protocol": "https",
+									"host": [
+										"test4",
+										"stechvn",
+										"org"
+									],
+									"path": [
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "?offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "t",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "[1]"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get total unseen message by userId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/unseen",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"unseen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "coversation detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/64a6489a250e3e78a5f0a292",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"64a6489a250e3e78a5f0a292"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "coversation get messages",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/65190c1f7c41521e7540ca8a/messages?sort=desc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"65190c1f7c41521e7540ca8a",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "coversation get media",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiYTdhMzY3Yy01OWU3LTQ4OTAtYWI2NC1mNDI1ZjBlNmY4NDUiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2OTI2OTI3OTEsImV4cCI6MTY5NTI4NDc5MX0.92D7T6Sh7syCFzzSzPgOsGLktjMYtuxDV02PW8YbgKc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/64a6489a250e3e78a5f0a292/medias?sort=desc",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"64a6489a250e3e78a5f0a292",
+										"medias"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "coversation delete message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM4MjdmMy00YWQ1LTVlYTYtYWRjNi0xZjZkM2M0ZGY1YTQiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2Njg3MzQ0NjIsImV4cCI6MTY2ODgyMDg2Mn0.hGgAZDw7Y1wPvjeiRKDuYvGB0L8_n6sQs79riqvsOXI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/delete-message/6377d2f8290089426d73e41e",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"delete-message",
+										"6377d2f8290089426d73e41e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete a conversation",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/63544287f6e43d002e2b0970",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"63544287f6e43d002e2b0970"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create group chat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": 2,\n    \"name\": \"group chat 1\",\n    \"memberIds\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add member to group chat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\": [2] \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/6356bafdd00efc997b3fa54a/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"6356bafdd00efc997b3fa54a",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove member to group chat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\": [2] \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/6356bafdd00efc997b3fa54a/remove",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"6356bafdd00efc997b3fa54a",
+										"remove"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create invidual chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMWE5OTc2YS1jNWUzLTQyZjMtYmNiZi1jNDNmZGE2ZTZkM2UiLCJzYWx0IjoiOWUzZDZkY2EzNmYzM2FlYTRiY2M3YzQzMTg2MmI2NGIiLCJpYXQiOjE2OTY2NjMzNzIsImV4cCI6MTY5OTI1NTM3Mn0.WyqSIALixF6y4gYIGf0PEO0u6TcF6e7QRbSK7FuoZvc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": 1,\n    \"memberIds\": [\"633f9666-218d-40f5-8763-3d1b70c29dc8\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update conversation",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"group 1 ne 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/63544287f6e43d002e2b0970",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"63544287f6e43d002e2b0970"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "decide conversation request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/conversations/:conversation_id/decide/:status",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										":conversation_id",
+										"decide",
+										":status"
+									],
+									"variable": [
+										{
+											"key": "conversation_id",
+											"value": "6518f9068c2b9499ce678ca6"
+										},
+										{
+											"key": "status",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "google drive",
+			"item": [
+				{
+					"name": "create link login google drive to authority",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"google_id\": \"101196083852524252529\",\n    \"google_email\": \"hung2811.iuh@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/drive/authorize",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"drive",
+								"authorize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "submit code to authority google drive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"4/0AX4XfWh0FmdEpkrpi4mvsit7sLlo9h8qs1lUhm4hM1zbvAsK4IL4fSrHw-A0Ilx1vLm5xw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/drive/verification",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"drive",
+								"verification"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://115.79.140.218:9008/api"
+		}
+	]
+}

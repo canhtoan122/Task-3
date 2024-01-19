@@ -1,0 +1,1058 @@
+{
+	"info": {
+		"_postman_id": "e6b528b6-58c9-40d4-9c4d-2a52214fe348",
+		"name": "chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29668827"
+	},
+	"item": [
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "setting",
+					"item": [
+						{
+							"name": "turn off/on pin note, vote, msg in group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/pin/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"pin",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "655781a15df916503118433a"
+										},
+										{
+											"key": "type",
+											"value": "on",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "turn off/on vote group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/vote/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"vote",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "655781a15df916503118433a"
+										},
+										{
+											"key": "type",
+											"value": "off",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "turn off/on join group by link invite",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/join-link-invite/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"join-link-invite",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "655781a15df916503118433a"
+										},
+										{
+											"key": "type",
+											"value": "off",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "turn off/on note group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/note/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"note",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "6559bbee863b5de374e09c7f"
+										},
+										{
+											"key": "type",
+											"value": "off",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "turn off/on send msg group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/send-msg/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"send-msg",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "655781a15df916503118433a"
+										},
+										{
+											"key": "type",
+											"value": "off",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "turn off/on review member group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/review-member/:conversationId/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"review-member",
+										":conversationId",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "655781a15df916503118433a"
+										},
+										{
+											"key": "type",
+											"value": "off",
+											"description": "\"off\" là tắt, \"on\" là bật"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "grant role member group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"7c41c43b-8733-4bcd-9cd9-4b4e0b9f9181\",\n    \"role\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/group/grant/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"group",
+										"grant",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "65578141b77b33ffb3dbf5fd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "prevent join group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"7c41c43b-8733-4bcd-9cd9-4b4e0b9f9181\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/prevent-join/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"prevent-join",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "6559bbee863b5de374e09c7f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "disband group",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/group/disband/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"group",
+										"disband",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "6558b8a63c9aa570e31d5508"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unprevent join group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"preventId\": \"6558c349e5a6e2b52debc609\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/setting/group/unprevent-join/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"setting",
+										"group",
+										"unprevent-join",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "6558b8a63c9aa570e31d5508"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "hide conversation by pin code",
+					"item": [
+						{
+							"name": "hide conversation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"conversationId\": \"6559bbee863b5de374e09c7f\",\n    \"pin\": \"111111\" // chỗi bất kì\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/hidden",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"hidden"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unhide conversation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"conversationId\": \"6559bbee863b5de374e09c7f\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/unhidden",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"unhidden"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "join group by link invite",
+					"item": [
+						{
+							"name": "get group info by inviteId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/group/invite/:inviteId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"group",
+										"invite",
+										":inviteId"
+									],
+									"variable": [
+										{
+											"key": "inviteId",
+											"value": "6559bbee863b5de374e09c81"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "join group by inviteId",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/group/invite/:inviteId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"group",
+										"invite",
+										":inviteId"
+									],
+									"variable": [
+										{
+											"key": "inviteId",
+											"value": "6559bbee863b5de374e09c81"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "vote",
+					"item": [
+						{
+							"name": "create vote",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"isPinned\": false,// optional - default false;\n\t\"question\": \"test question\", // require - length(1, 200)\n\t\"option\": [\"phương án 1\", \"phương án 2\"], // require - Array(length(2, 30)), Array<string(length(1, 200))>\n\t\"allowMultipleAnswers\": false, // optional - default true,\n\t\"allowAddOption\": true, // optional - default true\n\t\"hideResultBeforeAnswers\": true, //optional - default false\n\t\"hideMemberAnswers\": false, //optional - default false\n\t\"allowChangeAnswers\": true, //optional - default true\n\t\"duration\": \"1700548906644\" // optional - default false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/vote/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"vote",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "656023975eccc63013ff8c55"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "close or pin/unpin vote",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/vote/:voteId/:action",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"vote",
+										":voteId",
+										":action"
+									],
+									"variable": [
+										{
+											"key": "voteId",
+											"value": "65602c78301b73d8b33b81ac"
+										},
+										{
+											"key": "action",
+											"value": "1",
+											"description": "1 is pin, 2 is unpin, 3 is close vote"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add option vote",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"option\": [\"thêm bình chọn 1\", \"thêm bình chọn 2\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/vote/:voteId/:action",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"vote",
+										":voteId",
+										":action"
+									],
+									"variable": [
+										{
+											"key": "voteId",
+											"value": "65602d17c7ad5cc2bd3c4158"
+										},
+										{
+											"key": "action",
+											"value": "4",
+											"description": "thêm phương án cho bình chọn"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get vote",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/vote/:conversationId?limit=10&sort=asc&offset=0",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"vote",
+										":conversationId"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "656023975eccc63013ff8c55"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "answers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"voteOptionId\": [\"65603b176fb022c3a9dad613\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/answers-vote",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"answers-vote"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "note",
+					"item": [
+						{
+							"name": "create note",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPinned\": true, // optional, default false\n    \"content\": \"test\" // require\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/note/:conversationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"note",
+										":conversationId"
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "656023975eccc63013ff8c55"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get list note",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/note/:conversationId?limit=1&offset=0",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"note",
+										":conversationId"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									],
+									"variable": [
+										{
+											"key": "conversationId",
+											"value": "656023975eccc63013ff8c55"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update note",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPinned\": true, // optional, not change => keep old value\n    \"content\": \"test edit 2\" // require\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/note/:noteId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"note",
+										":noteId"
+									],
+									"variable": [
+										{
+											"key": "noteId",
+											"value": "656023a65eccc63013ff8ca1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete note",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/conversations/note/:noteId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"conversations",
+										"note",
+										":noteId"
+									],
+									"variable": [
+										{
+											"key": "noteId",
+											"value": "655b0e85bf7fd2af686efcd3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "pin conversation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/conversations/:action/:conversationId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"conversations",
+								":action",
+								":conversationId"
+							],
+							"variable": [
+								{
+									"key": "action",
+									"value": "pin",
+									"description": "pin hoặc unpin"
+								},
+								{
+									"key": "conversationId",
+									"value": "656023975eccc63013ff8c55"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "turn off/on notification",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"time\": \"1700656327650\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/conversations/setting/notification/:conversationId/:type",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"conversations",
+								"setting",
+								"notification",
+								":conversationId",
+								":type"
+							],
+							"variable": [
+								{
+									"key": "conversationId",
+									"value": "6559bbee863b5de374e09c7f"
+								},
+								{
+									"key": "type",
+									"value": "off",
+									"description": "\"off\" là tắt, \"on\" là bật lại thông báo"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "setting",
+					"item": [
+						{
+							"name": "turn off/on status seened message",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/setting/status-message/:type",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"setting",
+										"status-message",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "on",
+											"description": "\"off\" là tắt, \"on\" là bật lại thông báo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get list user setting",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/setting",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"setting"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
