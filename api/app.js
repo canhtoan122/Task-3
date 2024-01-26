@@ -11,7 +11,7 @@ serverRouter = require("./routes/server");
 let signInRouter = require('./routes/signIn');
 let loginRouter = require('./routes/login');
 let notificationRouter = require('./routes/conversations/setting/notification');
-let registerRouter = require('./routes/register');
+let statusMessageRouter = require('./routes/users/setting/status-message');
 
 var app = express();
 
@@ -31,8 +31,8 @@ app.use('/users', usersRouter);
 app.use("/server", serverRouter);
 app.use("/signIn", signInRouter);
 app.use("/login", loginRouter);
-app.use("/register", registerRouter);
 app.use("/conversations/setting/notification", notificationRouter);
+app.use("/users/setting/status-message", statusMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

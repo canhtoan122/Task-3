@@ -41,8 +41,8 @@ let getConversationSetting = async (array) => {
 }
 let createConversationId = async (conversationSetting) => {
   try {
-    let conversationSettings = await query(`INSERT INTO conversationSetting (conversationId, type, value, time) 
-    VALUES ('${conversationSetting.conversationId}', '${conversationSetting.type}', '${conversationSetting.value}', '${conversationSetting.time}')`);
+    let conversationSettings = await query(`INSERT INTO conversationSetting (conversationId, type, time) 
+    VALUES ('${conversationSetting.conversationId}', '${conversationSetting.type}', '${conversationSetting.time}')`);
     return conversationSettings;
   } catch (err) {
     console.log(err);
@@ -51,7 +51,7 @@ let createConversationId = async (conversationSetting) => {
 let updateConversationId = async (conversationSetting) => {
   try {
     let conversationSettings = await query(`UPDATE conversationSetting 
-      SET type = '${conversationSetting.type}', value= '${conversationSetting.value}', time= '${conversationSetting.value}'
+      SET type = '${conversationSetting.type}', time= '${conversationSetting.time}'
       WHERE conversationId = ${conversationSetting.conversationId};`);
     return conversationSettings;
   } catch (err) {
@@ -60,8 +60,8 @@ let updateConversationId = async (conversationSetting) => {
 }
 
 router.put('/', async function (req, res, next) {
-  let { conversationId, type, value, time } = req.body;
-  let conversationSettings = new conversationSetting(conversationId, type, value, time);
+  let { conversationId, type, time } = req.body;
+  let conversationSettings = new conversationSetting(conversationId, type, time);
   let conversationSettingsArray = [];
   if (await checkConversationId(conversationId)) {
     await updateConversationId(conversationSettings);

@@ -1,8 +1,7 @@
 class conversationSetting {
-    constructor(conversationId, type, value, time) {
+    constructor(conversationId, type, time) {
         this.conversationId = conversationId;
         this.type = type;
-        this.value = value;
         this.time = time;
     }
 }

@@ -18,9 +18,9 @@ const query = util.promisify(connection.query).bind(connection);
 let insertUser = async (user) => {
     try {
         let userData = { ...user };
-        let users = await query(`INSERT INTO user (token, expired_at) 
-        VALUES ('${userData.token}', '${userData.expired_at}')`);
-        return users;
+        let query = `INSERT INTO user (token, expired_at) 
+        VALUES ('${userData.token}', '${userData.expired_at}')`;
+        await executeQuery(query);
     } catch (err) {
         console.log(err);
     }
