@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
-let User = require('./Model/User');
+let User = require('../Model/User');
+let { createToken } = require('./createToken');
 let jwt = require('jsonwebtoken');
 
 let mysql = require('mysql');
@@ -21,16 +22,6 @@ let insertUser = async (user) => {
         let query = `INSERT INTO user (token, expired_at) 
         VALUES ('${userData.token}', '${userData.expired_at}')`;
         await executeQuery(query);
-    } catch (err) {
-        console.log(err);
-    }
-}
-function createToken(user) {
-    try {
-        let secret = 'Canhtoan111';
-        let payload = { ...user };
-        let token = jwt.sign(payload, secret, { algorithm: 'HS256' }, { expiresIn: '1h' });
-        return token;
     } catch (err) {
         console.log(err);
     }

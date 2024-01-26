@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
-let User = require('./Model/User');
-let jwt = require('jsonwebtoken');
-
+let User = require('../Model/User');
+let { verifyToken } = require('./verifyToken');
 let mysql = require('mysql');
 
 // Create a connection to the MySQL server
@@ -23,22 +22,6 @@ let getUser = async () => {
         console.log(err);
     }
 }
-function verifyToken(token) {
-    try {
-        return new Promise((resolve, reject) => {
-            let secret = 'Canhtoan111';
-            jwt.verify(token, secret, { algorithm: 'HS256' }, function (err, decoded) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(decoded);
-                }
-            });
-        });
-    } catch (err) {
-        console.log(err);
-    }
-}
 router.post('/', async function (req, res, next) {
     try {
         let { email, password } = req.body;
@@ -52,8 +35,8 @@ router.post('/', async function (req, res, next) {
             let result = await verifyToken(token);
             tokens.push(result);
         }
-        for(let i = 0; i < tokens.length; i++){
-            if(tokens[i].password ==  passwordInput&& tokens[i].email == emailInput){
+        for (let i = 0; i < tokens.length; i++) {
+            if (tokens[i].password == passwordInput && tokens[i].email == emailInput) {
                 check = true;
                 break;
             }

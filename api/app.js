@@ -8,9 +8,10 @@ var cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 serverRouter = require("./routes/server");
-let signInRouter = require('./routes/signIn');
-let loginRouter = require('./routes/login');
+let signInRouter = require('./routes/signIn/index');
+let loginRouter = require('./routes/login/index');
 let notificationRouter = require('./routes/conversations/setting/notification');
+let conversationsHiddenRouter = require('./routes/conversations/hidden/index');
 let statusMessageRouter = require('./routes/users/setting/status-message');
 
 var app = express();
@@ -32,6 +33,7 @@ app.use("/server", serverRouter);
 app.use("/signIn", signInRouter);
 app.use("/login", loginRouter);
 app.use("/conversations/setting/notification", notificationRouter);
+app.use("/conversations/hidden", conversationsHiddenRouter);
 app.use("/users/setting/status-message", statusMessageRouter);
 
 // catch 404 and forward to error handler
