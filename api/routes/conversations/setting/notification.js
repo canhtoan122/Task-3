@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 let conversationSetting = require('./Model/conversationSetting');
 let mysql = require('mysql');
+let { verifyToken } = require('../../login/verifyToken');
 
 // Create a connection to the MySQL server
 const connection = mysql.createConnection({
@@ -62,7 +63,12 @@ let updateConversationId = async (conversationSetting) => {
 }
 
 router.put('/', async function (req, res, next) {
-  let { conversationId, type, time } = req.body;
+  let { conversationId, type, time, token } = req.body;
+  let user = await verifyToken(token);
+  if(user.role != 1 && user.role != 2 && user.role != 3) {
+    res.end("User role is not allow for this function.");
+    return;
+  }
   let conversationSettings = new conversationSetting(conversationId, type, time);
   let conversationSettingsArray = [];
   if (await checkConversationId(conversationId)) {

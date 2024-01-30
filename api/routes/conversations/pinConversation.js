@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+let { verifyToken } = require('../login/verifyToken');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -40,7 +41,12 @@ try {
 }
 }
 router.put('/', async function (req, res, next) {
-    const { action, conversationId } = req.body;
+    const { action, conversationId, token } = req.body;
+    let user = await verifyToken(token);
+    if(user.role != 1 && user.role != 2 && user.role != 3) {
+        res.end("User role is not allow for this function.");
+        return;
+    }
     let isPinned = null;
     if(action == "pin"){
         isPinned = true;

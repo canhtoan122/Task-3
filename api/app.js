@@ -18,6 +18,7 @@ let createGroupChatRouter = require('./routes/conversations/creategroupchat');
 let pinConversationRouter = require('./routes/conversations/pinConversation');
 let noteRouter = require('./routes/conversations/note/index');
 let voteRouter = require('./routes/conversations/vote/index');
+let grantRouter = require('./routes/conversations/group/grant/index');
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use("/conversations", createGroupChatRouter);
 app.use("/conversations/pinConversation", pinConversationRouter);
 app.use("/conversations/note", noteRouter);
 app.use("/conversations/vote", voteRouter);
+app.use("/conversations/group/grant", grantRouter);
 
 
 // catch 404 and forward to error handler

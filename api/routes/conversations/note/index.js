@@ -24,7 +24,7 @@ let getConversationSetting = async (conversationId) => {
 let updateConversationSetting = async (conversationSetting) => {
     try{
         let update = await query(`UPDATE conversationSetting
-        SET isPinned = ${conversationSetting.isPinned}, content = ${conversationSetting.content}
+        SET isPinned = ${conversationSetting.isPinned}, content = '${conversationSetting.content}'
         WHERE inviteId = ${conversationSetting.inviteId}`);
         return conversationSetting;
     }catch(err){
@@ -33,14 +33,19 @@ let updateConversationSetting = async (conversationSetting) => {
 }
 router.post('/', async function (req, res, next) {
     let { conversationId, token, isPinned, content } = req.body;
+    let user = await verifyToken(token);
+    if(user.role != 1 && user.role != 2 && user.role != 3) {
+        res.end("User role is not allow for this function.");
+        return;
+    }
     let conversationSetting = await getConversationSetting(conversationId);
     if(conversationSetting.length === 0){
         res.end("There is no conversationSetting that have conversationId:" + conversationId);
         return;
     }else{
-        await updateConversationSetting(conversationSetting[0]);
         conversationSetting[0].isPinned = isPinned;
         conversationSetting[0].content = content;
+        await updateConversationSetting(conversationSetting[0]);
     }
     res.json(conversationSetting);
   });

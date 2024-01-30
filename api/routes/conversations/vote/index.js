@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let mysql = require('mysql');
+let { verifyToken } = require('../../login/verifyToken');
 // Create a connection to the MySQL server
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -30,7 +31,12 @@ let updateVote = async(conversationId, isPinned, question, option, allowMultiple
     }
 }
 router.post('/', async function (req, res, next) {
-    const { conversationId, isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers } = req.body;
+    const { token, conversationId, isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers } = req.body;
+    let user = await verifyToken(token);
+    if(user.role != 1 && user.role != 2 && user.role != 3) {
+        res.end("User role is not allow for this function.");
+        return;
+    }
     let conversationSetting = await getConversationSetting(conversationId);
     let optionString = "";
     if(conversationSetting[0].question == null){

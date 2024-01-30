@@ -65,6 +65,7 @@ router.post('/', async function (req, res, next) {
     let decodedToken = jwt.decode(newToken);
     let expired_at = decodedToken && decodedToken.iat;
     let updateNewToken = await updateToken(userId, newToken, expired_at);
+    user.token = newToken;
     res.json(user);
 });
 

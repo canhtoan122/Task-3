@@ -34,6 +34,10 @@ router.post('/', async function (req, res, next) {
     const { inviteId, token } = req.body;
     let groupChat = await getGroupChat(inviteId);
     let user = await verifyToken(token);
+    if(user.role != 1 && user.role != 2) {
+        res.end("User role is not allow for this function.");
+        return;
+    }
     let memberIdsString = '';
     if(groupChat[0].memberIds != null){
         const memberIdsArray = groupChat[0].memberIds.split(', ').map(member => member.trim());
