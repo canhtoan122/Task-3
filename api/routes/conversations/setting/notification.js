@@ -41,8 +41,10 @@ let getConversationSetting = async (array) => {
 }
 let createConversationId = async (conversationSetting) => {
   try {
-    let conversationSettings = await query(`INSERT INTO conversationSetting (conversationId, type, time) 
-    VALUES ('${conversationSetting.conversationId}', '${conversationSetting.type}', '${conversationSetting.time}')`);
+    let conversationSettings = await query('SELECT * FROM conversationSetting');
+    let create = await query(`UPDATE conversationSetting 
+    SET type = '${conversationSetting.type}', time= '${conversationSetting.time}', conversationId = '${conversationSetting.conversationId}'
+    WHERE inviteId = ${conversationSettings[0].inviteId}`);
     return conversationSettings;
   } catch (err) {
     console.log(err);
@@ -70,7 +72,7 @@ router.put('/', async function (req, res, next) {
     await createConversationId(conversationSettings);
     conversationSettingArray = await getConversationSetting(conversationSettingsArray);
   }
-  res.json(conversationSettingsArray);
+  res.json(conversationSettingArray);
 });
 
 module.exports = router;

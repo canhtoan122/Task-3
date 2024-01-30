@@ -24,7 +24,7 @@ let updateConversation = async (id, isConversationHidden, pin) => {
     try{
         let conversations = await query(`UPDATE conversationSetting
         SET isConversationHidden = ${isConversationHidden}, pin = '${pin}'
-        WHERE id = ${id}`);
+        WHERE inviteId = ${id}`);
         return conversations;
     }catch(err){
         console.log(err);
@@ -35,17 +35,17 @@ function turnOnOffHidden(conversation, pin){
         conversation.isConversationHidden = true;
         conversation.pin = pin;
         let conversations = updateConversation(conversation.id, conversation.isConversationHidden, conversation.pin);
-        return conversations;
+        return conversation;
     }else if(conversation.isConversationHidden == false){
         conversation.isConversationHidden = true;
         conversation.pin = pin;
         let conversations = updateConversation(conversation.id, conversation.isConversationHidden, conversation.pin);
-        return conversations;
+        return conversation;
     }else if(conversation.isConversationHidden == true){
         conversation.isConversationHidden = false;
         conversation.pin = pin;
         let conversations = updateConversation(conversation.id, conversation.isConversationHidden, conversation.pin);
-        return conversations;
+        return conversation;
     }
 }
 router.post('/', async function (req, res, next) {
@@ -54,8 +54,11 @@ router.post('/', async function (req, res, next) {
     let conversationResult = conversations.find((item) => {
         return item.conversationId == conversationId;
     });
-    let result = turnOnOffHidden(conversationResult, pin);
-
-    res.json(result);
+    if(conversationResult != undefined){
+        let result = turnOnOffHidden(conversationResult, pin);
+        res.json(result);
+    }else{
+        res.end(false);
+    }
 });
 module.exports = router;

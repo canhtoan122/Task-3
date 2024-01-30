@@ -19,9 +19,9 @@ const query = util.promisify(connection.query).bind(connection);
 let insertUser = async (user) => {
     try {
         let userData = { ...user };
-        let query = `INSERT INTO user (token, expired_at) 
-        VALUES ('${userData.token}', '${userData.expired_at}')`;
-        await executeQuery(query);
+        let temp = await query(`INSERT INTO user (token, expired_at) 
+        VALUES ('${userData.token}', '${userData.expired_at}')`);
+        return userData;
     } catch (err) {
         console.log(err);
     }
@@ -29,8 +29,8 @@ let insertUser = async (user) => {
 
 router.post('/', function (req, res, next) {
     try {
-        let { name, username, email, password, role } = req.body;
-        let user = new User(username, name, email, password, role);
+        let { name, username, email, password } = req.body;
+        let user = new User(username, name, email, password);
         let token = createToken(user);
         user["token"] = token;
         let decodedToken = jwt.decode(token);

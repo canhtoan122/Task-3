@@ -13,6 +13,11 @@ let loginRouter = require('./routes/login/index');
 let notificationRouter = require('./routes/conversations/setting/notification');
 let conversationsHiddenRouter = require('./routes/conversations/hidden/index');
 let statusMessageRouter = require('./routes/users/setting/status-message');
+let inviteGroupRouter = require('./routes/conversations/group/invite/index');
+let createGroupChatRouter = require('./routes/conversations/creategroupchat');
+let pinConversationRouter = require('./routes/conversations/pinConversation');
+let noteRouter = require('./routes/conversations/note/index');
+let voteRouter = require('./routes/conversations/vote/index');
 
 var app = express();
 
@@ -35,6 +40,12 @@ app.use("/login", loginRouter);
 app.use("/conversations/setting/notification", notificationRouter);
 app.use("/conversations/hidden", conversationsHiddenRouter);
 app.use("/users/setting/status-message", statusMessageRouter);
+app.use("/conversations/group/invite", inviteGroupRouter);
+app.use("/conversations", createGroupChatRouter);
+app.use("/conversations/pinConversation", pinConversationRouter);
+app.use("/conversations/note", noteRouter);
+app.use("/conversations/vote", voteRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
