@@ -24,11 +24,11 @@ let getUser = async () => {
       console.log(err);
   }
 }
-let updateUser = async (id, token, expired_at) => {
+let updateUser = async (userId, token, expired_at) => {
   try {
     let users = await query(`UPDATE user
     SET token = '${token}', expired_at = '${expired_at}'
-    WHERE id = ${id}`);
+    WHERE userId = ${userId}`);
     return users;
   } catch (err) {
       console.log(err);
@@ -60,7 +60,7 @@ router.put('/', async function (req, res, next) {
   let newToken = await createToken(user);
   let decodedToken = jwt.decode(newToken);
   let expired_at = decodedToken && decodedToken.iat;
-  let result = await updateUser(resultUser.id, newToken, expired_at);
+  let result = await updateUser(resultUser.userId, newToken, expired_at);
   user.token = newToken;
   res.json(user);
 });

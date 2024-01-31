@@ -21,7 +21,7 @@ let getUserId = async (token) => {
         let user = users.find((item) => {
             return users.token = token;
         });
-        return user.id;
+        return user.userId;
     }catch(err){
         console.log(err);
     }
@@ -48,7 +48,7 @@ let updateToken = async(id, token, expired_at)=>{
     try{
         let conversations = await query(`UPDATE user
         SET token = '${token}', expired_at = '${expired_at}'
-        WHERE id = ${id}`);
+        WHERE userId = ${id}`);
         return conversations;
     }catch(err){
         console.log(err);
@@ -61,6 +61,10 @@ router.post('/', async function (req, res, next) {
     let user = await verifyToken(token);
     user.role = 1;
     let userId = await getUserId(token);
+    if(userId === undefined){
+        res.end("Cannot find user id");
+        return;
+    }
     let newToken = await createToken(user);
     let decodedToken = jwt.decode(newToken);
     let expired_at = decodedToken && decodedToken.iat;
