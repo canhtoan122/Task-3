@@ -58,7 +58,7 @@ router.post('/', async function (req, res, next) {
         let user = await verifyToken(token);
         if(user.role != 1 && user.role != 2 && user.role != 3) {
             user.role = 4;
-            let userId = await findUserId(token);
+            let userId = await getUserToken(token);
             let newToken = await createToken(user);
             let decodedToken = jwt.decode(newToken);
             let expired_at = decodedToken && decodedToken.iat;
