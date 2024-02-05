@@ -6,19 +6,21 @@ var logger = require('morgan');
 var cors = require("cors");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user');
 serverRouter = require("./routes/server");
-let signInRouter = require('./routes/signIn/index');
-let loginRouter = require('./routes/login/index');
+let signInRouter = require('./routes/users/signIn/index');
+let loginRouter = require('./routes/users/login/index');
+let forgotPasswordRouter = require('./routes/users/forgotPassword/index');
 let notificationRouter = require('./routes/conversations/setting/notification');
 let conversationsHiddenRouter = require('./routes/conversations/hidden/index');
 let statusMessageRouter = require('./routes/users/setting/status-message');
 let inviteGroupRouter = require('./routes/conversations/group/invite/index');
-let createGroupChatRouter = require('./routes/conversations/creategroupchat');
-let pinConversationRouter = require('./routes/conversations/pinConversation');
+let createGroupChatRouter = require('./routes/conversations/group/Group Chat/groupchat');
+let pinConversationRouter = require('./routes/conversations/pin/pinConversation');
 let noteRouter = require('./routes/conversations/note/index');
 let voteRouter = require('./routes/conversations/vote/index');
 let grantRouter = require('./routes/conversations/group/grant/index');
+let preventIdRouter = require('./routes/conversations/setting/group/preventJoin');
 
 var app = express();
 
@@ -38,15 +40,18 @@ app.use('/users', usersRouter);
 app.use("/server", serverRouter);
 app.use("/signIn", signInRouter);
 app.use("/login", loginRouter);
+app.use("/forgotPassword", forgotPasswordRouter);
 app.use("/conversations/setting/notification", notificationRouter);
 app.use("/conversations/hidden", conversationsHiddenRouter);
 app.use("/users/setting/status-message", statusMessageRouter);
 app.use("/conversations/group/invite", inviteGroupRouter);
+app.use("/conversations/group/kick", inviteGroupRouter);
 app.use("/conversations", createGroupChatRouter);
 app.use("/conversations/pinConversation", pinConversationRouter);
 app.use("/conversations/note", noteRouter);
 app.use("/conversations/vote", voteRouter);
 app.use("/conversations/group/grant", grantRouter);
+app.use("/conversations/setting/group/preventJoin", preventIdRouter);
 
 
 // catch 404 and forward to error handler

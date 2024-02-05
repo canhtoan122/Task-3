@@ -1,39 +1,11 @@
 var express = require('express');
 var router = express.Router();
-let statusMessageSetting = require('./Model/status-messageSetting');
-let mysql = require('mysql');
-let { verifyToken } = require('../../login/verifyToken');
-let { createToken } = require('../../signIn/createToken');
+let statusMessageSetting = require('../../../Models/statusMessage');
+let { verifyToken } = require('../../users/login/verifyToken');
+let { createToken } = require('../../users/signIn/createToken');
 let jwt = require('jsonwebtoken');
-
-// Create a connection to the MySQL server
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'iris',
-});
-
-const util = require('util');
-const query = util.promisify(connection.query).bind(connection);
-let getUser = async () => {
-  try {
-      let users = await query('SELECT * FROM user');
-      return users;
-  } catch (err) {
-      console.log(err);
-  }
-}
-let updateUser = async (userId, token, expired_at) => {
-  try {
-    let users = await query(`UPDATE user
-    SET token = '${token}', expired_at = '${expired_at}'
-    WHERE userId = ${userId}`);
-    return users;
-  } catch (err) {
-      console.log(err);
-  }
-}
+let { getAllUser } = require('../../../Database CRUD/user/read');
+let { updateUser } = require('../../../Database CRUD/user/update');
 
 router.put('/', async function (req, res, next) {
   let { type, token } = req.body;
@@ -49,7 +21,7 @@ router.put('/', async function (req, res, next) {
     statusMessage = new statusMessageSetting(false, 0);
   }
   user.statusMessage = statusMessage;
-  let users = await getUser();
+  let users = await getAllUser();
   let resultUser = users.find((item) => {
     return item.token == token;
   });

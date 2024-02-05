@@ -1,35 +1,11 @@
 var express = require('express');
 var router = express.Router();
-let mysql = require('mysql');
-let { verifyToken } = require('../../login/verifyToken');
-// Create a connection to the MySQL server
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'iris',
-});
-const util = require('util');
-const query = util.promisify(connection.query).bind(connection);
-let getConversationSetting = async(conversationId) => {
-    try{
-        let conversationSetting = await query(`SELECT * FROM conversationSetting WHERE conversationId = ${conversationId}`);
-        return conversationSetting;
-    }catch(err){
-        console.log(err);
-    }
-}
-let updateVote = async(conversationId, isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers) =>{
-    try{
-        let createConversationSetting = await query(`UPDATE conversationSetting
-        SET isPinned = ${isPinned}, question = '${question}', option = '${option}', allowMultipleAnswer = ${allowMultipleAnswer}, 
-        allowAddOption = ${allowAddOption}, hiddenResultBeforeAnswer = ${hiddenResultBeforeAnswer}, allowChangeAnswers = ${allowChangeAnswers}
-        WHERE conversationId = ${conversationId}`);
-        return createConversationSetting;
-    }catch(err){
-        console.log(err);
-    }
-}
+let { verifyToken } = require('../../users/login/verifyToken');
+let { getVoteId, getAllVote } = require('../../../Database CRUD/vote/read');
+let { updateVote } = require('../../../Database CRUD/vote/update');
+let { updateisVoted } = require('../../../Database CRUD/conversation/update');
+let { getAllConversation } = require('../../../Database CRUD/conversation/read');
+
 router.post('/', async function (req, res, next) {
     const { token, conversationId, isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers } = req.body;
     let user = await verifyToken(token);
@@ -37,20 +13,18 @@ router.post('/', async function (req, res, next) {
         res.end("User role is not allow for this function.");
         return;
     }
-    let conversationSetting = await getConversationSetting(conversationId);
-    let optionString = "";
-    if(conversationSetting[0].question == null){
-        optionString = option.join(', ');
-        await updateVote(conversationId, isPinned, question, optionString, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers);
-        conversationSetting[0].isPinned = isPinned;
-        conversationSetting[0].question = question;
-        conversationSetting[0].option = optionString;
-        conversationSetting[0].allowMultipleAnswer = allowMultipleAnswer;
-        conversationSetting[0].allowAddOption = allowAddOption;
-        conversationSetting[0].hiddenResultBeforeAnswer = hiddenResultBeforeAnswer;
-        conversationSetting[0].allowChangeAnswers = allowChangeAnswers;
+    let vote = await getVoteId(conversationId);
+    if(isPinned == true){
+        await updateVote(vote[0].id, conversationId, "on", isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers);
+        await updateisVoted(conversationId, true, isPinned);
+    }else{
+        await updateVote(vote[0].id, conversationId, "off", isPinned, question, option, allowMultipleAnswer, allowAddOption, hiddenResultBeforeAnswer, allowChangeAnswers);
+        await updateisVoted(conversationId, false, isPinned);
     }
-    res.json(conversationSetting);
+    let result = await getAllVote();
+    let temp = await getAllConversation();
+    result = [...temp];
+    res.json(result);
 });
 
 module.exports = router;
